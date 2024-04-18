@@ -5,6 +5,7 @@ This is a basic calculator web application with a minimalistic design. It allows
 ## Demo
 
 You can try out the calculator live [here](https://raw.githack.com/vasenkom/Calculator/main/index.html).
+
 ## Features
 
 - Addition (+)
