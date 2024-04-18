@@ -77,6 +77,18 @@ dot.addEventListener('click', function() {
     }
 })
 
+deleteBtn.addEventListener('click', function() {
+    if (display.textContent != "") {
+        if (operator == "" && !num1.includes(".")) {
+            display.textContent += "."
+            num1 += ".";
+        } else if (operator != "" && !num2.includes(".") && num2 != "") {
+            display.textContent += "."
+            num2 += ".";
+        }
+    }
+})
+
 function sum(n1, n2) {
     return parseFloat(n1) + parseFloat(n2);
 }
