@@ -79,14 +79,19 @@ dot.addEventListener('click', function() {
 
 deleteBtn.addEventListener('click', function() {
     if (display.textContent != "") {
-        if (operator == "" && !num1.includes(".")) {
-            display.textContent += "."
-            num1 += ".";
-        } else if (operator != "" && !num2.includes(".") && num2 != "") {
-            display.textContent += "."
-            num2 += ".";
+        if (operator == "") {
+            display.textContent = display.textContent.slice(0, -1);
+            num1 = num1.slice(0, -1);
+            console.log(num1);
+            
+        } else if (operator != "" && num2 != "") {
+            display.textContent = display.textContent.slice(0, -1);
+            num2 = num2.slice(0, -1);
+            console.log(num2);
         }
     }
+    
+    
 })
 
 function sum(n1, n2) {
