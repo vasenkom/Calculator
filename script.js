@@ -4,19 +4,27 @@ const proces = document.querySelectorAll(".proces");
 const deleteBtn = document.querySelector(".delete");
 const deleteEverythingBtn = document.querySelector(".deleteEverything");
 const equal = document.querySelector(".equal");
-const addBtn = document.querySelector(".add");
 
 let num1 = "";
 let num2 = "";
 let operator = "";
-equalUsed = false;
+let equalUsed = false;
+let operatorUsed = false;
+let result = 0;
 
 numbers.forEach((number) => {
     number.addEventListener('click', function () {
+        if (isNaN(parseInt(display.textContent))) {
+            display.textContent = "";
+        }
         if (equalUsed === true) {
             display.textContent = "";
             num1 = "";
             equalUsed = false;
+        }
+        if (operatorUsed === true) {
+            display.textContent = "";
+            operatorUsed = false;
         }
         
         display.textContent += number.textContent;
@@ -31,19 +39,27 @@ numbers.forEach((number) => {
 
 proces.forEach((sign) => {
     sign.addEventListener('click', function() {
+        // if (typeof display.textContent === 'string') {
+        //     display.textContent = "";
+        // }
+        if (equalUsed === true) {
+            equalUsed = false;
+        }
         if (operator === "" && num1 !== "") {
-            display.textContent = '';
+            // display.textContent = '';
             operator += sign.textContent;
-            display.textContent += sign.textContent;
+            // display.textContent += sign.textContent;
             console.log(num1); //debugging
             console.log(num2); //debugging
+            operatorUsed = true;
         } else if (num1 === "" || num2 === "") {
             //do nothing
         } else {
-            display.textContent = '';
+            // display.textContent = '';
             operate(num1, num2, operator);
-            display.textContent += sign.textContent;
+            // display.textContent += sign.textContent;
             operator = sign.textContent;
+            operatorUsed = true;
         }
     })
 })
@@ -67,8 +83,8 @@ function substract(n1, n2) {
 equal.addEventListener('click', function() {
     if (num1 != '' && num2 != '') {
         operate(num1, num2, operator);
+        equalUsed = true
     }
-    
 })
 
 function operate(n1, n2, sign) {
@@ -88,6 +104,18 @@ function operate(n1, n2, sign) {
     num1 = (Math.round(result *10) / 10).toString();
     operator = "";
     num2 = "";
+    console.log(typeof(num1)); //debugging
+    console.log(typeof(num2));
     display.textContent = num1
 }
 
+deleteEverythingBtn.addEventListener('click', function () {
+    display.textContent = "";
+    num1 = "";
+    num2 = "";
+    operator = "";
+    result = 0;
+    console.log(num1); //debugging
+    console.log(num2); //debugging
+    equalUsed = false;
+})
