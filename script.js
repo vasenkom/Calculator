@@ -5,6 +5,7 @@ const deleteBtn = document.querySelector(".delete");
 const deleteEverythingBtn = document.querySelector(".deleteEverything");
 const equal = document.querySelector(".equal");
 const dot = document.querySelector(".dot");
+const heart = document.querySelector(".heart");
 
 let num1 = "";
 let num2 = "";
@@ -63,6 +64,10 @@ proces.forEach((sign) => {
             operatorUsed = true;
         }
     })
+})
+
+heart.addEventListener('click', function() {
+    window.alert("˚ʚ♡ɞ˚")
 })
 
 dot.addEventListener('click', function() {
