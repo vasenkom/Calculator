@@ -4,6 +4,7 @@ const proces = document.querySelectorAll(".proces");
 const deleteBtn = document.querySelector(".delete");
 const deleteEverythingBtn = document.querySelector(".deleteEverything");
 const equal = document.querySelector(".equal");
+const dot = document.querySelector(".dot");
 
 let num1 = "";
 let num2 = "";
@@ -64,20 +65,32 @@ proces.forEach((sign) => {
     })
 })
 
+dot.addEventListener('click', function() {
+    if (display.textContent != "") {
+        if (operator == "" && !num1.includes(".")) {
+            display.textContent += "."
+            num1 += ".";
+        } else if (operator != "" && !num2.includes(".") && num2 != "") {
+            display.textContent += "."
+            num2 += ".";
+        }
+    }
+})
+
 function sum(n1, n2) {
-    return parseInt(n1) + parseInt(n2);
+    return parseFloat(n1) + parseFloat(n2);
 }
 
 function devide(n1, n2) {
-    return parseInt(n1) / parseInt(n2);
+    return parseFloat(n1) / parseFloat(n2);
 }
 
 function multiply(n1, n2) {
-    return parseInt(n1) * parseInt(n2);
+    return parseFloat(n1) * parseFloat(n2);
 }
 
 function substract(n1, n2) {
-    return parseInt(n1) - parseInt(n2);
+    return parseFloat(n1) - parseFloat(n2);
 }
 
 equal.addEventListener('click', function() {
@@ -105,7 +118,7 @@ function operate(n1, n2, sign) {
     operator = "";
     num2 = "";
     console.log(typeof(num1)); //debugging
-    console.log(typeof(num2));
+    console.log(typeof(num2)); //debugging
     display.textContent = num1
 }
 
